@@ -7,7 +7,14 @@ moviesRouter.get("/:imdbId", async (req,res,next)=> {
         const response = await fetch(`http://www.omdbapi.com/?i=${req.params.imdbId}&apikey=${process.env.API_KEY}`)
         if(response.ok){
             const movie = await response.json();
-            res.send(movie)
+            const movieObject = {
+                title: movie.Title,
+                poster: movie.Poster,
+                year: movie.Year,
+                plot: movie.Plot,
+                imdbID: movie.imdbID
+            }
+            res.send(movieObject)
         }
     } catch (error) {
         next(error)
