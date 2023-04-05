@@ -1,7 +1,6 @@
 {
   "name": "omdbai-app",
   "version": "1.0.0",
-  "type": "module",
   "description": "App to search and display details of movies from the OMDb API",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
