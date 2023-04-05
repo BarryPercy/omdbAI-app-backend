@@ -1,12 +1,21 @@
 import express from "express";
+import fetch from 'node-fetch';
 
 const moviesRouter = express.Router()
+
+interface Movie {
+    Title: string;
+    Poster: string;
+    Year: string;
+    Plot: string;
+    imdbID: string;
+  }
 
 moviesRouter.get("/:imdbId", async (req,res,next)=> {
     try {
         const response = await fetch(`http://www.omdbapi.com/?i=${req.params.imdbId}&apikey=${process.env.API_KEY}`)
         if(response.ok){
-            const movie = await response.json();
+            const movie = await response.json() as Movie;
             const movieObject = {
                 title: movie.Title,
                 poster: movie.Poster,
