@@ -7,7 +7,6 @@ import 'dotenv/config';
 
 const server = Express()
 const port = process.env.PORT
-console.log("this is port->",process.env.PORT)
 server.use(Express.json())
 
 server.use(cors())
