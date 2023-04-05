@@ -11,9 +11,9 @@ const port = process.env.PORT
 server.use(Express.json())
 server.use(cors())
 const limiter = rateLimit({
-    windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 100 // limit each IP to 100 requests per windowMs
-});
+    windowMs: 60 * 1000, // 1 minute
+    max: 5
+  });
 server.use(limiter);
 server.use("/movies", moviesRouter)
 server.use("/search", searchRouter)
