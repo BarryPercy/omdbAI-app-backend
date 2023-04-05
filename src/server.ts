@@ -3,6 +3,7 @@ import listEndpoints from "express-list-endpoints"
 import cors from 'cors'
 import moviesRouter from './api/movies/index'
 import searchRouter from './api/search/index'
+import rateLimit from 'express-rate-limit';
 import 'dotenv/config';
 
 const server = Express()
