@@ -8,12 +8,13 @@ import 'dotenv/config';
 
 const server = Express()
 const port = process.env.PORT
-
 server.use(Express.json())
-
 server.use(cors())
-server.use(Express.json())
-
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100 // limit each IP to 100 requests per windowMs
+});
+server.use(limiter);
 server.use("/movies", moviesRouter)
 server.use("/search", searchRouter)
 
