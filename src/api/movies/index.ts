@@ -13,6 +13,7 @@ interface Movie {
 
 moviesRouter.get("/:imdbId", async (req,res,next)=> {
     try {
+        console.log("getting movie")
         const response = await fetch(`http://www.omdbapi.com/?i=${req.params.imdbId}&apikey=${process.env.API_KEY}`)
         if(response.ok){
             const movie = await response.json() as Movie;
