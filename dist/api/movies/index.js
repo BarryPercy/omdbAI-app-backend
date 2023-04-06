@@ -4,14 +4,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const node_fetch_1 = __importDefault(require("node-fetch"));
+const axios_1 = __importDefault(require("axios"));
 const moviesRouter = express_1.default.Router();
 moviesRouter.get("/:imdbId", async (req, res, next) => {
     try {
-        console.log("getting movie");
-        const response = await (0, node_fetch_1.default)(`http://www.omdbapi.com/?i=${req.params.imdbId}&apikey=${process.env.API_KEY}`);
-        if (response.ok) {
-            const movie = await response.json();
+        const response = await axios_1.default.get(`http://www.omdbapi.com/?i=${req.params.imdbId}&apikey=${process.env.API_KEY}`);
+        if (response.status = 200) {
+            const movie = await response.data;
             const movieObject = {
                 title: movie.Title,
                 poster: movie.Poster,

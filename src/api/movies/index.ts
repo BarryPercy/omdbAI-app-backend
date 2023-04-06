@@ -1,5 +1,5 @@
 import express from "express";
-import fetch from 'node-fetch';
+import axios from "axios";
 
 const moviesRouter = express.Router()
 
@@ -13,10 +13,9 @@ interface Movie {
 
 moviesRouter.get("/:imdbId", async (req,res,next)=> {
     try {
-        console.log("getting movie")
-        const response = await fetch(`http://www.omdbapi.com/?i=${req.params.imdbId}&apikey=${process.env.API_KEY}`)
-        if(response.ok){
-            const movie = await response.json() as Movie;
+        const response = await axios.get(`http://www.omdbapi.com/?i=${req.params.imdbId}&apikey=${process.env.API_KEY}`)
+        if(response.status=200){
+            const movie = await response.data as Movie;
             const movieObject = {
                 title: movie.Title,
                 poster: movie.Poster,
