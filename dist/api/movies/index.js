@@ -8,6 +8,7 @@ const node_fetch_1 = __importDefault(require("node-fetch"));
 const moviesRouter = express_1.default.Router();
 moviesRouter.get("/:imdbId", async (req, res, next) => {
     try {
+        console.log("getting movie");
         const response = await (0, node_fetch_1.default)(`http://www.omdbapi.com/?i=${req.params.imdbId}&apikey=${process.env.API_KEY}`);
         if (response.ok) {
             const movie = await response.json();

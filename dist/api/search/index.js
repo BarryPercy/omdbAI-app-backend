@@ -8,6 +8,7 @@ const node_fetch_1 = __importDefault(require("node-fetch"));
 const searchRouter = express_1.default.Router();
 searchRouter.get("/:title", async (req, res, next) => {
     try {
+        console.log("searching");
         const response = await (0, node_fetch_1.default)(`http://www.omdbapi.com/?s=${req.params.title}&type=movie&apikey=${process.env.API_KEY}`);
         if (response.ok) {
             const search = await response.json();
