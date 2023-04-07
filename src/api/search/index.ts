@@ -7,6 +7,7 @@ searchRouter.get("/:title", async (req,res,next)=> {
     try {
         try {
             let cache = await tedisClient.get(req.params.title);
+            console.log("catch here",cache)
             if(cache === null){
                 console.log("not in db")
                 
