@@ -17,7 +17,6 @@ const limiter = rateLimit({
 server.use(limiter);
 server.use("/movies", moviesRouter)
 server.use("/search", searchRouter)
-
 server.listen(port, () => {
     console.table(listEndpoints(server))
     console.log(`Server is running on port ${port}`)
