@@ -14,8 +14,8 @@ const limiter = rateLimit({
     windowMs: 60 * 1000, // 1 minute
     max: 5
   });
-server.use(limiter);
 server.use("/movies", moviesRouter)
+server.use(limiter);
 server.use("/search", searchRouter)
 server.listen(port, () => {
     console.table(listEndpoints(server))
