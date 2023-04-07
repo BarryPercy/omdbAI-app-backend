@@ -20,6 +20,7 @@ searchRouter.get("/:title", async (req,res,next)=> {
                 }
             }else{
                 console.log("is in db")
+                console.log(cache)
                 res.send(JSON.parse(cache.toString()))   
             }
             
