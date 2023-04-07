@@ -12,7 +12,7 @@ server.use(Express.json())
 server.use(cors())
 const limiter = rateLimit({
     windowMs: 60 * 1000, // 1 minute
-    max: 5
+    max: 30
   });
 server.use("/movies", moviesRouter)
 server.use(limiter);
