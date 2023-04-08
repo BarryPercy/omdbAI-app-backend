@@ -3,26 +3,21 @@ import axios from "axios";
 import { tedisClient } from "../../redis";
 const searchRouter = express.Router()
 
-searchRouter.get("/:title", async (req,res,next)=> {
+searchRouter.get("/:title", async (req,res,next)=> { //gets the search term and gets the top 10 responses
     try {
         try {
-            let cache = await tedisClient.get(req.params.title);
-            console.log("catch here",cache)
-            if(cache === null){
-                console.log("not in db")
-                
+            let cache = await tedisClient.get(req.params.title); //checks if the search is already in the cache
+            if(cache === null){ //sends a request top OMDb api if it's not in the cache          
                 const response = await axios.get(`http://www.omdbapi.com/?s=${req.params.title}&type=movie&apikey=${process.env.API_KEY}`)
                 if(response.status===200){
-                    const search = await response.data;
-                    await tedisClient.set(req.params.title, JSON.stringify(search));
-                    res.send(search)
+                    const search = await response.data; //converts to readable data
+                    await tedisClient.set(req.params.title, JSON.stringify(search)); //puts it in the cache
+                    res.send(search) 
                 }else{
-                    res.status(400).send(`Could not fetch anything with ${req.params.title}`)
+                    res.status(400).send(`Failed to fetch anything with search term ${req.params.title}`)
                 }
             }else{
-                console.log("is in db")
-                console.log(cache)
-                res.send(JSON.parse(cache.toString()))   
+                res.send(JSON.parse(cache.toString()))   //if it is in the cache it sends a JSON object of the search to the client.
             }
             
           } catch (err) {
