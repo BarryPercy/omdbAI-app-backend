@@ -5,7 +5,6 @@
 - [Project Development Roadmap](#project-development-roadmap)
 - [How to Run The Project](#how-to-run-the-project)
 
-
 ## Project summary
 
 ### Front End and Back End
@@ -21,7 +20,7 @@ An app to search for any movie in the [OMDb Database](https://www.omdbapi.com/),
 
 ### Detailed Description
 
-An app that sends a get request to the backend to retrieve the top 10 movie results of a specific search term, from the movies shown you can click on a movie which opens another page which adds the movies imdbId to the url which is used to make another get request to retrieve the movie details of the selected movie.__
+An app that sends a get request to the backend to retrieve the top 10 movie results of a specific search term, from the movies shown you can click on a movie which opens another page which adds the movies imdbId to the url which is used to make another get request to retrieve the movie details of the selected movie.
 
 In the backend there is also rate limiting in place so that you can't make more than 30 requests in a minute. Also when a request is made, it sends a get request to a redis cache to check whether the search request
 has ever been made by anyone before, if it hasn't it makes a request to the OMDb api and sets that search result in the redis cache, if it has then it simply sends the parsed search results back.
