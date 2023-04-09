@@ -6,7 +6,6 @@
 - [Additional details](#additional-details)
 - [About this template](#about-this-template)
 
-_INSTRUCTIONS: Complete all required deliverable sections below._
 
 ## Project summary
 
@@ -16,7 +15,7 @@ Barry Percy
 - [Github](https://github.com/BarryPercy)
 - [Portfolio(currently in progress)](https://barry-percy-portfolio.vercel.app/)
 
-### 2 Projects
+### Front End and Back End
 
 This was created using a frontend and a backend and is a full stack application written completely in typescript.
 
@@ -84,7 +83,7 @@ Download Projects Separately.
     -REACT_APP_BACKEND (e.g. "http://localhost:3001" if running locally)
 
 ## Author
-###Barry Percy
+### Barry Percy
 
 - [Github](https://github.com/BarryPercy)
 - [Portfolio(currently in progress)](https://barry-percy-portfolio.vercel.app/)
