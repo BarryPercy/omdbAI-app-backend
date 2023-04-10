@@ -11,6 +11,9 @@ interface Movie {
     Plot: string;
     imdbID: string;
     Response: string;
+    Genre: string;
+    Actors: string;
+    Rated: string;
   }
 
 moviesRouter.get("/:imdbId", async (req,res,next)=> { //sends a request to OMDb api with the given imdb id and uses some of the information
@@ -29,7 +32,10 @@ moviesRouter.get("/:imdbId", async (req,res,next)=> { //sends a request to OMDb 
                         year: movie.Year,
                         plot: movie.Plot,
                         imdbID: movie.imdbID,
-                        Response: movie.Response
+                        Response: movie.Response,
+                        genre: movie.Genre,
+                        actors: movie.Actors,
+                        rated: movie.Rated
                     }
                     await tedisClient.set(`movie ${req.params.imdbId}`, JSON.stringify(movieObject)); //puts the search results in the cache
                     res.send(movieObject)
