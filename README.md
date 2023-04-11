@@ -73,7 +73,7 @@ Download Projects Separately.
 - Clone the [FrontEnd Project](https://github.com/BarryPercy/omdbapi-app-frontend)
 - Add a .env file to the main folder of your project.
 - Add the follow environment variable to your .env
-    -REACT_APP_BACKEND (e.g. "http://localhost:3001" if running locally)
+    - REACT_APP_BACKEND (e.g. "http://localhost:3001" if running locally)
 - Open a terminal from the project folder.
     - Run "npm i" to install all the projects dependencies.
     - Run "npm start"
